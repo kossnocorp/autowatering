@@ -1,0 +1,31 @@
+{
+  "name": "Autowatering",
+
+  "build": { "dockerfile": "Dockerfile", "context": ".." },
+
+  "onCreateCommand": "./.devcontainer/scripts/on-create.sh",
+  "postCreateCommand": "./.devcontainer/scripts/post-create.sh",
+  "updateContentCommand": "./.devcontainer/scripts/on-update.sh",
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "rust-lang.rust-analyzer",
+        "vadimcn.vscode-lldb",
+        "tamasfe.even-better-toml",
+        "nefrob.vscode-just-syntax",
+        "docker.docker",
+        "esbenp.prettier-vscode",
+        "hverlin.mise-vscode"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "fish",
+        "terminal.integrated.profiles.linux": {
+          "fish": {
+            "path": "/usr/bin/fish"
+          }
+        }
+      }
+    }
+  }
+}

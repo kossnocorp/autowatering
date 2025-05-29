@@ -55,15 +55,17 @@ async fn main(spawner: Spawner) {
     loop {
         let adc_reading = nb::block!(adc1.read_oneshot(&mut adc1_pin)).unwrap();
 
+        info!("Running pump...");
         mosfet_en.set_low(); // opto LED on → MOSFET closes
         Timer::after(Duration::from_secs(5)).await;
         mosfet_en.set_high(); // opto LED off → MOSFET opens
+        info!("Stop!");
 
-        info!("Hello world!");
         info!("ADC reading: {} mV", adc_reading);
         // Dry: ~2800 mV
         // Water: ~1100 mV
 
+        info!("Toggled LED...");
         led.toggle();
         Timer::after(Duration::from_secs(1)).await;
     }

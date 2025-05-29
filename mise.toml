@@ -1,0 +1,7 @@
+[tools]
+cargo-binstall = "latest"
+"cargo:just" = "latest"
+
+[settings]
+experimental = true
+idiomatic_version_file_enable_tools = ["rust"]
